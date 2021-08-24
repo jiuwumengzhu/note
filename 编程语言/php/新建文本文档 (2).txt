@@ -1,0 +1,28 @@
+    $checkstatus = false;
+    if($_POST["user"] && $_POST["pass"]){
+          $checkdata = fopen("pass.txt","r+");
+            while($checkdata) {
+                $data = explode("::", fgets($checkdata));
+                if ($_POST["user"] == trim($data[0]) && $_POST["pass"] == trim($data[1])) {
+                    echo "登录成功";
+                    setcookie("user",$_POST['user']);
+                    $name = $_POST['user'];
+                    echo "<h3>😀hello!&nbsp;$name </h3>";
+                    $checkstatus = true;
+                    break;
+                }
+                elseif(feof($checkdata)){
+                    echo "登录失败！请"."<a href='login.html'>重新登录</a>";
+                    break;
+                }
+            }
+            if (!isset($_COOKIE['user'])){
+                echo "<script>alert('请登录')</script>";
+                $url="login.html";
+                echo "<SCRIPT>";
+                echo "location.href='$url'";
+                echo "</SCRIPT>";
+                die();
+                }
+            }
+

